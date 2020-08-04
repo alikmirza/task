@@ -28,7 +28,6 @@ public class WorkerService {
 
     public List<Customer> findProperCustomer(double amount, int period) {
         double monthly = amount/period;
-        System.out.println(monthly);
         List<Payment> allByDelayLessThan = paymentsRepo.getAllByDelayLessThan(monthly);
         List<Customer> customerList = allByDelayLessThan.stream()
                 .filter(payment -> monthly < payment.getMaxAmountToPay())
